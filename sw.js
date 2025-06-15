@@ -7,9 +7,7 @@ const ASSETS_TO_CACHE = [
     '/manifest.json',
     '/assets/favicon-32x32.png',
     '/assets/favicon-16x16.png',
-    '/assets/apple-touch-icon.png',
-    '/assets/icon-192x192.png',
-    '/assets/icon-512x512.png'
+    '/assets/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {

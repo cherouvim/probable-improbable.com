@@ -91,9 +91,11 @@ body {
     font-weight: bold;
     padding: 0.2em 0.4em;
     border-radius: 8px;
-    animation: colorCycle 8s infinite;
+    animation: borderCycle 8s infinite;
     display: inline;
     margin-left: 0.25em;
+    border: 3px dotted #d94343;
+    background: none;
 }
 
 .phrase.first .probable-improbable-word {
@@ -104,24 +106,24 @@ body {
     animation-delay: 4s;
 }
 
-@keyframes colorCycle {
+@keyframes borderCycle {
     0% {
-        background-color: #d94343;
+        border-color: #d94343;
     }
     20% {
-        background-color: #2fa89c;
+        border-color: #2fa89c;
     }
     40% {
-        background-color: #217a9a;
+        border-color: #217a9a;
     }
     60% {
-        background-color: #5a8c6d;
+        border-color: #5a8c6d;
     }
     80% {
-        background-color: #b38a1b;
+        border-color: #b38a1b;
     }
     100% {
-        background-color: #d94343;
+        border-color: #d94343;
     }
 }
 
