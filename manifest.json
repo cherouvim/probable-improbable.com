@@ -1,6 +1,6 @@
 {
-    "name": "Probable or Improbable",
-    "short_name": "Word Game",
+    "name": "Probable—Improbable",
+    "short_name": "Probable—Improbable",
     "description": "Test your intuition with this word probability game",
     "start_url": "/",
     "display": "standalone",
