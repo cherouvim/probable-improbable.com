@@ -97,9 +97,20 @@ function showEndScreen(won) {
   clearInterval(state.timerInterval);
   const container = document.querySelector('.phrase-container');
   container.innerHTML = `<div style="text-align:center; width:100%; padding:2em 0;">
-    <div style="font-size:2em; margin-bottom:1em;">${won ? '🎉 You won!' : '⏰ Game over!'}</div>
-    <button id="restart-btn" style="font-size:1.2em; padding:0.5em 2em; border-radius:8px; cursor:pointer;">OK—restart</button>
+    <div class="end-game-text">${won ? '🎉 You Won!' : '⏰ Game Over!'}</div>
+    <button id="restart-btn" class="end-game-button">Play Again</button>
   </div>`;
+  document.getElementById('restart-btn').onclick = () => {
+    state.gameOver = false;
+    state.won = false;
+    state.level = 1;
+    state.corrects = 0;
+    state.usedPhrases = new Set();
+    state.timer = TIMER_START;
+    state.currentPhrase = null;
+    state.totalAnswered = 0;
+    startGame();
+  };
 }
 
 document.addEventListener('click', function(e) {

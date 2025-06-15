@@ -25,6 +25,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 body {
@@ -73,9 +78,10 @@ body {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     line-height: 1.4;
     font-family: 'Consolas', 'Courier New', monospace;
+    touch-action: manipulation;
 }
 
-.phrase:hover {
+.phrase:hover:not(:active) {
     border-color: #FFD600;
 }
 
@@ -91,10 +97,10 @@ body {
     font-weight: bold;
     padding: 0.2em 0.4em;
     border-radius: 8px;
-    animation: borderCycle 8s infinite;
+    animation: borderCycle 4s infinite;
     display: inline;
     margin-left: 0.25em;
-    border: 6px dotted #d94343;
+    border: 9px dotted #d94343;
     background: none;
 }
 
@@ -169,11 +175,38 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 1em 2em;
-    font-size: 1.2em;
+    font-size: 2.4em;
     pointer-events: none;
     z-index: 10;
 }
 
 .hud span {
     pointer-events: auto;
+}
+
+.end-game-text {
+    font-size: 3em;
+    margin-bottom: 1em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.end-game-button {
+    font-size: 2.4em;
+    padding: 0.5em 2em;
+    border-radius: 16px;
+    cursor: pointer;
+    background: var(--phrase-bg);
+    color: var(--text-color);
+    border: 0.8em solid transparent;
+}
+
+.end-game-button:hover:not(:active) {
+    border-color: #FFD600;
 } 
