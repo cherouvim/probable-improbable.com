@@ -7,7 +7,11 @@ const ASSETS_TO_CACHE = [
     '/manifest.json',
     '/assets/favicon-32x32.png',
     '/assets/favicon-16x16.png',
-    '/assets/apple-touch-icon.png'
+    '/assets/favicon.ico',
+    '/assets/apple-touch-icon.png',
+    '/assets/android-chrome-192x192.png',
+    '/assets/android-chrome-512x512.png',
+    '/assets/cover.png'
 ];
 
 self.addEventListener('install', (event) => {
