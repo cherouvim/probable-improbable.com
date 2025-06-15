@@ -1,0 +1,133 @@
+:root {
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --phrase-bg: #1a1a1a;
+    --phrase-hover: #2d2d2d;
+    --border-radius: 16px;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #ffffff;
+        --text-color: #000000;
+        --phrase-bg: #f0f0f0;
+        --phrase-hover: #e0e0e0;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .phrase {
+        color: #fff;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.phrase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    height: auto;
+    justify-content: center;
+    align-items: stretch;
+    margin: 4vw 0;
+}
+
+.phrase {
+    flex: none;
+    min-height: 2.5em;
+    padding: 1.2em 20px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--phrase-bg);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: center;
+    border: 0.8em solid transparent;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: none;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.4;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.phrase:hover {
+    border-color: #FFD600;
+}
+
+.phrase-content {
+    display: block;
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.4;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.probable-improbable-word {
+    font-weight: bold;
+    padding: 0.2em 0.4em;
+    border-radius: 8px;
+    animation: colorCycle 8s infinite;
+    display: inline;
+    margin-left: 0.25em;
+}
+
+.phrase.first .probable-improbable-word {
+    animation-delay: 0s;
+}
+
+.phrase.second .probable-improbable-word {
+    animation-delay: 4s;
+}
+
+@keyframes colorCycle {
+    0% {
+        background-color: #d94343;
+    }
+    20% {
+        background-color: #2fa89c;
+    }
+    40% {
+        background-color: #217a9a;
+    }
+    60% {
+        background-color: #5a8c6d;
+    }
+    80% {
+        background-color: #b38a1b;
+    }
+    100% {
+        background-color: #d94343;
+    }
+}
+
+@media (max-width: 768px) {
+    .phrase {
+        min-height: 2.5em;
+        padding: 1.2em 10px;
+    }
+} 

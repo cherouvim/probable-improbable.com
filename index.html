@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probable or Improbable - Word Game</title>
+    <meta name="description" content="Test your intuition with this word probability game. Choose between probable and improbable word continuations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Social Share -->
+    <meta property="og:title" content="Probable or Improbable - Word Game">
+    <meta property="og:description" content="Test your intuition with this word probability game. Choose between probable and improbable word continuations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://probable-improbable.com">
+    <meta property="og:image" content="/assets/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Probable or Improbable - Word Game">
+    <meta name="twitter:description" content="Test your intuition with this word probability game. Choose between probable and improbable word continuations.">
+    <meta name="twitter:image" content="/assets/og-image.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main id="game-container">
+        <div class="phrase-container">
+            <button class="phrase first">
+                The sun rises in the <span class="probable-improbable-word">east</span>
+            </button>
+            <button class="phrase second">
+                The sun rises in the <span class="probable-improbable-word">microwave</span>
+            </button>
+        </div>
+    </main>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Game Scripts -->
+    <script src="/js/game.js"></script>
+</body>
+</html> 
