@@ -35,26 +35,15 @@
 </head>
 <body>
     <main id="game-container">
+        <div class="hud">
+            <span id="hud-level"></span>
+            <span id="hud-timer"></span>
+        </div>
         <div class="phrase-container">
             <button class="phrase first"></button>
             <button class="phrase second"></button>
         </div>
     </main>
-    
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-            });
-        }
-    </script>
     
     <!-- Game Scripts -->
     <script type="module" src="/js/game.js"></script>
