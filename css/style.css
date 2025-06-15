@@ -42,13 +42,13 @@ body {
     align-items: center;
 }
 
-#game-container {
+main {
     width: 100%;
     max-width: 1200px;
     padding: 20px;
 }
 
-.phrase-container {
+.phrases {
     display: flex;
     flex-direction: column;
     gap: 2vw;
@@ -58,18 +58,16 @@ body {
     margin: 4vw 0;
 }
 
-.phrase {
+.phrases > button {
     flex: none;
     min-height: 2.5em;
     padding: 1.2em 20px;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    text-align: center;
     background-color: var(--phrase-bg);
     border-radius: var(--border-radius);
     cursor: pointer;
-    text-align: center;
     border: 0.8em solid transparent;
     outline: none;
     appearance: none;
@@ -81,8 +79,16 @@ body {
     touch-action: manipulation;
 }
 
-.phrase:hover:not(:active) {
+.phrases > button:hover:not(:active) {
     border-color: #FFD600;
+}
+
+.phrases > button.first .probable-improbable-word {
+    animation-delay: 0s;
+}
+
+.phrases > button.second .probable-improbable-word {
+    animation-delay: 4s;
 }
 
 .phrase-content {
@@ -102,14 +108,6 @@ body {
     margin-left: 0.25em;
     border: 9px dotted #d94343;
     background: none;
-}
-
-.phrase.first .probable-improbable-word {
-    animation-delay: 0s;
-}
-
-.phrase.second .probable-improbable-word {
-    animation-delay: 4s;
 }
 
 @keyframes borderCycle {
@@ -134,7 +132,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .phrase {
+    .phrases > button {
         min-height: 2.5em;
         padding: 1.2em 10px;
     }

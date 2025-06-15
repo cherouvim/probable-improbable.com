@@ -39,8 +39,8 @@ function renderPhrase(phraseObj) {
   const second = probableFirst ? phraseObj.improbable : phraseObj.probable;
   const firstIsProbable = probableFirst;
 
-  const firstBtn = document.querySelector('.phrase.first');
-  const secondBtn = document.querySelector('.phrase.second');
+  const firstBtn = document.querySelector('.phrases > button.first');
+  const secondBtn = document.querySelector('.phrases > button.second');
   if (firstBtn && secondBtn) {
     const anim1 = -Math.random() * 8;
     const anim2 = -Math.random() * 8;
@@ -95,7 +95,7 @@ function showEndScreen(won) {
   state.gameOver = true;
   state.won = won;
   clearInterval(state.timerInterval);
-  const container = document.querySelector('.phrase-container');
+  const container = document.querySelector('.phrases');
   container.innerHTML = `<div style="text-align:center; width:100%; padding:2em 0;">
     <div class="end-game-text">${won ? '🎉 You Won!' : '⏰ Game Over!'}</div>
     <button id="restart-btn" class="end-game-button">Play Again</button>
@@ -141,8 +141,8 @@ function startGame() {
   state.currentPhrase = null;
   state.totalAnswered = 0;
   state.won = false;
-  const container = document.querySelector('.phrase-container');
-  container.innerHTML = '<button class="phrase first"></button><button class="phrase second"></button>';
+  const container = document.querySelector('.phrases');
+  container.innerHTML = '<button class="phrases first"></button><button class="phrases second"></button>';
   nextQuestion();
   startTimer();
 }
