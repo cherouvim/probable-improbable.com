@@ -6,21 +6,6 @@
     --border-radius: 16px;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --background-color: #ffffff;
-        --text-color: #000000;
-        --phrase-bg: #f0f0f0;
-        --phrase-hover: #e0e0e0;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body, main, .phrases > button, .probable-improbable-word {
-        color: #fff;
-    }
-}
-
 * {
     margin: 0;
     padding: 0;
