@@ -76,9 +76,15 @@ function renderPhrase(phraseObj) {
     secondBtn.disabled = false;
     firstBtn.classList.remove('reflect-anim');
     secondBtn.classList.remove('reflect-anim');
-    
+
+    // Clear any existing reflection timeouts
+    if (firstBtn._reflectionTimeout) clearTimeout(firstBtn._reflectionTimeout);
+    if (secondBtn._reflectionTimeout) clearTimeout(secondBtn._reflectionTimeout);
+
     scheduleReflection(firstBtn);
-    setTimeout(() => scheduleReflection(secondBtn), 500 + Math.random() * 1000);
+    firstBtn._reflectionTimeout = setTimeout(() => scheduleReflection(firstBtn), 500 + Math.random() * 1000);
+    scheduleReflection(secondBtn);
+    secondBtn._reflectionTimeout = setTimeout(() => scheduleReflection(secondBtn), 500 + Math.random() * 1000);
   }
 }
 
@@ -196,8 +202,9 @@ function triggerReflection(btn) {
   setTimeout(() => btn.classList.remove('reflect-anim'), 450);
 }
 function scheduleReflection(btn) {
+  if (btn._reflectionTimeout) clearTimeout(btn._reflectionTimeout);
   const delay = 2000 + Math.random() * 2000;
-  setTimeout(() => {
+  btn._reflectionTimeout = setTimeout(() => {
     triggerReflection(btn);
     if (!state.gameOver) scheduleReflection(btn);
   }, delay);
