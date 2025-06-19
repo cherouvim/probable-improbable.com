@@ -128,11 +128,6 @@ main {
     }
 }
 
-.glass-bg {
-    background: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.18) 100%) !important;
-    backdrop-filter: blur(1px);
-}
-
 .reflect-anim {
     position: relative;
     overflow: hidden;

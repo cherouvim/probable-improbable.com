@@ -74,8 +74,8 @@ function renderPhrase(phraseObj) {
     secondBtn.onclick = () => handleButtonClick(!firstIsProbable, 'second');
     firstBtn.disabled = false;
     secondBtn.disabled = false;
-    firstBtn.classList.remove('glass-bg', 'reflect-anim');
-    secondBtn.classList.remove('glass-bg', 'reflect-anim');
+    firstBtn.classList.remove('reflect-anim');
+    secondBtn.classList.remove('reflect-anim');
     
     // Add touch event handlers to prevent border persistence
     addTouchHandlers(firstBtn);
@@ -230,23 +230,15 @@ function startGame() {
 
 document.addEventListener('DOMContentLoaded', startGame);
 
-// Reflection/glass effect helpers
+// Reflection effect helpers
 function triggerReflection(btn) {
   btn.classList.add('reflect-anim');
   setTimeout(() => btn.classList.remove('reflect-anim'), 450);
-}
-function maybeGlass(btn) {
-  if (Math.random() < 0.25) {
-    btn.classList.add('glass-bg');
-  } else {
-    btn.classList.remove('glass-bg');
-  }
 }
 function scheduleReflection(btn) {
   const delay = 2000 + Math.random() * 2000;
   setTimeout(() => {
     triggerReflection(btn);
-    maybeGlass(btn);
     if (!state.gameOver) scheduleReflection(btn);
   }, delay);
 }
