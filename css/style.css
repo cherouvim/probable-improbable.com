@@ -191,6 +191,7 @@ main {
     margin-bottom: 1em;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     animation: pulse 2s infinite;
+    font-family: 'Consolas', 'Courier New', monospace;
 }
 
 @keyframes pulse {
@@ -209,6 +210,7 @@ main {
     border: 0.8em solid transparent;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    font-family: 'Consolas', 'Courier New', monospace;
 }
 
 .end-game-button:focus {
@@ -261,6 +263,9 @@ main {
         padding: 0 0.5em;
         margin: 0;
     }
+    .end-game-text {
+        font-size: 2em;
+    }
 }
 
 @media (max-width: 360px) {
@@ -276,5 +281,8 @@ main {
     body {
         padding: 0 0.5em;
         margin: 0;
+    }
+    .end-game-text {
+        font-size: 1.4em;
     }
 } 
