@@ -23,6 +23,7 @@ const sounds = {
   blop: createAudioWithFallback('/assets/sounds/blop.webm', '/assets/sounds/blop.mp3'),
   won: createAudioWithFallback('/assets/sounds/won.webm', '/assets/sounds/won.mp3'),
   gameOver: createAudioWithFallback('/assets/sounds/game-over.webm', '/assets/sounds/game-over.mp3'),
+  tick: createAudioWithFallback('/assets/sounds/tick.webm', '/assets/sounds/tick.mp3'),
 };
 
 function createAudioWithFallback(webmPath, mp3Path) {
@@ -176,6 +177,7 @@ function showEndScreen(won) {
   
   const restartBtn = document.getElementById('restart-btn');
   restartBtn.onclick = () => {
+    playSound('tick');
     state.gameOver = false;
     state.won = false;
     state.level = 1;
