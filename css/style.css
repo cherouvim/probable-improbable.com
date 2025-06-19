@@ -51,6 +51,7 @@ main {
     display: block;
     text-align: center;
     background-color: var(--phrase-bg);
+    color: var(--text-color);
     border-radius: var(--border-radius);
     cursor: pointer;
     border: 0.8em solid transparent;
@@ -62,10 +63,13 @@ main {
     line-height: 1.4;
     font-family: 'Consolas', 'Courier New', monospace;
     touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.phrases > button:hover:not(:active) {
-    border-color: #FFD600;
+.phrases > button:focus {
+    border-color: transparent;
+    outline: none;
 }
 
 .phrases > button.first .probable-improbable-word {
@@ -188,8 +192,11 @@ main {
     background: var(--phrase-bg);
     color: var(--text-color);
     border: 0.8em solid transparent;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.end-game-button:hover:not(:active) {
-    border-color: #FFD600;
+.end-game-button:focus {
+    border-color: transparent;
+    outline: none;
 } 
