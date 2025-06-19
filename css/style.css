@@ -99,31 +99,32 @@ main {
     font-weight: bold;
     padding: 0.2em 0.4em;
     border-radius: 8px;
-    animation: borderCycle 4s infinite;
+    animation: bgCycle 4s infinite;
     display: inline;
     margin-left: 0.25em;
-    border: 9px dotted #d94343;
-    background: none;
+    margin-right: 0.25em;
+    background: #d94343;
+    color: #fff;
 }
 
-@keyframes borderCycle {
+@keyframes bgCycle {
     0% {
-        border-color: #d94343;
+        background-color: #d94343;
     }
     20% {
-        border-color: #2fa89c;
+        background-color: #2fa89c;
     }
     40% {
-        border-color: #217a9a;
+        background-color: #217a9a;
     }
     60% {
-        border-color: #5a8c6d;
+        background-color: #5a8c6d;
     }
     80% {
-        border-color: #b38a1b;
+        background-color: #b38a1b;
     }
     100% {
-        border-color: #d94343;
+        background-color: #d94343;
     }
 }
 
