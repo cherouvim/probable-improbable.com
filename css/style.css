@@ -17,6 +17,13 @@
     -webkit-touch-callout: none;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Consolas', 'Courier New', monospace;
     background-color: var(--background-color);
@@ -120,13 +127,6 @@ main {
     }
 }
 
-@media (max-width: 768px) {
-    .phrases > button {
-        min-height: 2.5em;
-        padding: 1.2em 10px;
-    }
-}
-
 .glass-bg {
     background: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.18) 100%) !important;
     backdrop-filter: blur(1px);
@@ -161,14 +161,28 @@ main {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1em 2em;
     font-size: 2.4em;
     pointer-events: none;
     z-index: 10;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .hud span {
     pointer-events: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0 0.5em;
+}
+
+.hud span:first-child {
+    margin-left: 0;
+}
+
+.hud span:last-child {
+    margin-right: 0;
 }
 
 .end-game-text {
@@ -199,4 +213,67 @@ main {
 .end-game-button:focus {
     border-color: transparent;
     outline: none;
+}
+
+@media (max-width: 768px) {
+    .phrases > button {
+        min-height: 2.5em;
+        padding: 1.2em 0.5em;
+    }
+    .hud {
+        padding: 0.5em 0.5em;
+    }
+    main {
+        padding: 0 0.5em;
+        width: 100%;
+        max-width: 100%;
+    }
+    body {
+        padding: 0 0.5em;
+        margin: 0;
+    }
+    .end-game-button {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5em 0.5em;
+        text-align: center;
+        margin: 0;
+        display: block;
+    }
+    .phrases {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hud {
+        font-size: 1.8em;
+        padding: 0.5em 0.5em;
+    }
+    main {
+        padding: 0 0.5em;
+        width: 100%;
+        max-width: 100%;
+    }
+    body {
+        padding: 0 0.5em;
+        margin: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .hud {
+        font-size: 1.5em;
+        padding: 0.5em 0.5em;
+    }
+    main {
+        padding: 0 0.5em;
+        width: 100%;
+        max-width: 100%;
+    }
+    body {
+        padding: 0 0.5em;
+        margin: 0;
+    }
 } 
