@@ -77,46 +77,9 @@ function renderPhrase(phraseObj) {
     firstBtn.classList.remove('reflect-anim');
     secondBtn.classList.remove('reflect-anim');
     
-    // Add touch event handlers to prevent border persistence
-    addTouchHandlers(firstBtn);
-    addTouchHandlers(secondBtn);
-    
     scheduleReflection(firstBtn);
     setTimeout(() => scheduleReflection(secondBtn), 500 + Math.random() * 1000);
   }
-}
-
-function addTouchHandlers(button) {
-  // Remove any existing handlers
-  button.removeEventListener('touchstart', button._touchStartHandler);
-  button.removeEventListener('touchend', button._touchEndHandler);
-  button.removeEventListener('touchcancel', button._touchEndHandler);
-  button.removeEventListener('mouseup', button._mouseUpHandler);
-  button.removeEventListener('mouseleave', button._mouseLeaveHandler);
-  
-  // Create handlers
-  button._touchStartHandler = () => {
-    button.style.borderColor = '#FFD600';
-  };
-  
-  button._touchEndHandler = () => {
-    button.style.borderColor = 'transparent';
-  };
-  
-  button._mouseUpHandler = () => {
-    button.style.borderColor = 'transparent';
-  };
-  
-  button._mouseLeaveHandler = () => {
-    button.style.borderColor = 'transparent';
-  };
-  
-  // Add event listeners
-  button.addEventListener('touchstart', button._touchStartHandler, { passive: true });
-  button.addEventListener('touchend', button._touchEndHandler, { passive: true });
-  button.addEventListener('touchcancel', button._touchEndHandler, { passive: true });
-  button.addEventListener('mouseup', button._mouseUpHandler, { passive: true });
-  button.addEventListener('mouseleave', button._mouseLeaveHandler, { passive: true });
 }
 
 function handleButtonClick(isProbable, buttonType) {
@@ -188,9 +151,6 @@ function showEndScreen(won) {
     state.totalAnswered = 0;
     startGame();
   };
-  
-  // Add touch handlers to restart button
-  addTouchHandlers(restartBtn);
 }
 
 document.addEventListener('click', function(e) {

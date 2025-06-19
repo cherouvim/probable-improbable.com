@@ -280,4 +280,11 @@ main {
     .end-game-text {
         font-size: 1.4em;
     }
+}
+
+@media (hover: hover) {
+    .phrases > button:hover, .phrases > button:active,
+    .end-game-button:hover, .end-game-button:active {
+        border-color: #FFD600 !important;
+    }
 } 
