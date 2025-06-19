@@ -13,8 +13,31 @@ const state = {
   gameOver: false,
   currentPhrase: null,
   totalAnswered: 0,
-  won: false
+  won: false,
+  lastButtonType: null
 };
+
+// Simple Sound Engine with WebM + MP3 fallback
+const sounds = {
+  bleep: createAudioWithFallback('/assets/sounds/bleep.webm', '/assets/sounds/bleep.mp3'),
+  blop: createAudioWithFallback('/assets/sounds/blop.webm', '/assets/sounds/blop.mp3'),
+  won: createAudioWithFallback('/assets/sounds/won.webm', '/assets/sounds/won.mp3'),
+  gameOver: createAudioWithFallback('/assets/sounds/game-over.webm', '/assets/sounds/game-over.mp3'),
+};
+
+function createAudioWithFallback(webmPath, mp3Path) {
+  const audio = new Audio();
+  
+  // Try WebM first, fallback to MP3
+  audio.addEventListener('error', function() {
+    if (audio.src.includes('.webm')) {
+      audio.src = mp3Path;
+    }
+  });
+  
+  audio.src = webmPath;
+  return audio;
+}
 
 function getRandomPhrase(level) {
   const available = phrases[level - 1].filter((_, i) => !state.usedPhrases.has(`${level}-${i}`));
@@ -46,8 +69,8 @@ function renderPhrase(phraseObj) {
     const anim2 = -Math.random() * 8;
     firstBtn.innerHTML = `${phraseObj.text} <span class="probable-improbable-word" style="animation-delay: ${anim1}s;">${first}</span>`;
     secondBtn.innerHTML = `${phraseObj.text} <span class="probable-improbable-word" style="animation-delay: ${anim2}s;">${second}</span>`;
-    firstBtn.onclick = () => handleAnswer(firstIsProbable);
-    secondBtn.onclick = () => handleAnswer(!firstIsProbable);
+    firstBtn.onclick = () => handleButtonClick(firstIsProbable, 'first');
+    secondBtn.onclick = () => handleButtonClick(!firstIsProbable, 'second');
     firstBtn.disabled = false;
     secondBtn.disabled = false;
     firstBtn.classList.remove('glass-bg', 'reflect-anim');
@@ -55,6 +78,12 @@ function renderPhrase(phraseObj) {
     scheduleReflection(firstBtn);
     setTimeout(() => scheduleReflection(secondBtn), 500 + Math.random() * 1000);
   }
+}
+
+function handleButtonClick(isProbable, buttonType) {
+  // Store which button was clicked for sound purposes
+  state.lastButtonType = buttonType;
+  handleAnswer(isProbable);
 }
 
 function handleAnswer(isCorrect) {
@@ -72,6 +101,11 @@ function handleAnswer(isCorrect) {
       state.timer = TIMER_START + (state.level - 1);
     } else {
       state.timer = TIMER_START + (state.level - 1);
+    }
+    // Play button sound only if game continues
+    if (state.lastButtonType) {
+      playSound(state.lastButtonType === 'first' ? 'bleep' : 'blop');
+      state.lastButtonType = null;
     }
     renderHUD();
     nextQuestion();
@@ -100,6 +134,7 @@ function showEndScreen(won) {
     <div class="end-game-text">${won ? '🎉 You Won!' : '⏰ Game Over!'}</div>
     <button id="restart-btn" class="end-game-button">Play Again</button>
   </div>`;
+  playSound(won ? 'won' : 'gameOver');
   document.getElementById('restart-btn').onclick = () => {
     state.gameOver = false;
     state.won = false;
@@ -141,6 +176,7 @@ function startGame() {
   state.currentPhrase = null;
   state.totalAnswered = 0;
   state.won = false;
+  state.lastButtonType = null;
   const container = document.querySelector('.phrases');
   container.innerHTML = '<button class="phrases first"></button><button class="phrases second"></button>';
   nextQuestion();
@@ -168,4 +204,12 @@ function scheduleReflection(btn) {
     maybeGlass(btn);
     if (!state.gameOver) scheduleReflection(btn);
   }, delay);
+}
+
+function playSound(name) {
+  if (sounds[name]) {
+    // Reset and play
+    sounds[name].currentTime = 0;
+    sounds[name].play();
+  }
 } 
